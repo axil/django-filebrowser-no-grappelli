@@ -1,7 +1,7 @@
 {% extends "admin/base_site.html" %}
 
 <!-- LOADING -->
-{% load i18n adminmedia fb_tags %}
+{% load i18n adminmedia fb_tags l10n %}
 
 <!-- STYLESHEETS -->
 {% block extrastyle %}
@@ -35,7 +35,7 @@
                 'multi'             : true,
                 'fileDesc'          : '{% for extension in settings_var.EXTENSIONS.items %}{% ifnotequal extension.0 'Folder' %}{% for item in extension.1 %}*{{ item|safe }};{% endfor %}{% endifnotequal %}{% endfor %}',
                 'fileExt'           : '{% for extension in settings_var.EXTENSIONS.items %}{% ifnotequal extension.0 'Folder' %}{% for item in extension.1 %}*{{ item|safe }};{% endfor %}{% endifnotequal %}{% endfor %}',
-                'sizeLimit'         : {{ settings_var.MAX_UPLOAD_SIZE }},
+                'sizeLimit'         : {{ settings_var.MAX_UPLOAD_SIZE|unlocalize }},
                 'scriptAccess'      : 'sameDomain',
                 'queueSizeLimit'    : 50,
                 'simUploadLimit'    : 1,
